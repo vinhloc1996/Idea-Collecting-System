@@ -1,6 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Idea_Collecting_System.Database_Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -16,6 +18,13 @@ namespace Idea_Collecting_System.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string FullName { get; set; }
+        public string Address { get; set; }
+        public DateTime DoB { get; set; }
+        public bool? Gender { get; set; }
+        public Department Department { get; set; }
+        public bool? IsDisabled { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

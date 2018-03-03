@@ -3,42 +3,249 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title - Idea Collecting System</title>
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <!-- ************** Style Login Page ************** -->
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/icon-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/icon-hs/style.css">
+    <link rel="stylesheet" href="../../assets/vendor/animate.css">
+    <link rel="stylesheet" href="../../assets/vendor/hs-megamenu/src/hs.megamenu.css">
+    <link rel="stylesheet" href="../../assets/vendor/hamburgers/hamburgers.min.css">
+
+    <link rel="stylesheet" href="../../assets/css/unify-core.css">
+    <link rel="stylesheet" href="../../assets/css/unify-components.css">
+    <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+
+    <link rel="stylesheet" href="../../assets/css/custom.css">
+
+    <!-- ************** End Style Login Page ************** -->
+    <!-- ************** Style Home Page ************** -->
+
+    <link rel="stylesheet" href="../../assets/vendor/icon-line/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../assets/vendor/icon-line-pro/style.css">
+    <link rel="stylesheet" href="../../assets/vendor/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="../../assets/vendor/fancybox/jquery.fancybox.css">
+
+    <link rel="stylesheet" href="../../assets/css/styles.bm-classic.css">
+
+    <link rel="stylesheet" href="../../assets/css/custom.css">
+
+    <!-- ************** End Style Home Page ************** -->
+    <!-- ************** Style Single Page ************** -->
+
+    <link rel="stylesheet" href="../../assets/vendor/bootstrap/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../../assets/vendor/dzsparallaxer/dzsparallaxer.css">
+    <link rel="stylesheet" href="../../assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
+    <link rel="stylesheet" href="../../assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
+
+    <!-- ************** End Style Single Page ************** -->
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    @Html.Partial("_Header");
+    @RenderBody();
+    @Html.Partial("_Footer");
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @*    @Scripts.Render("~/bundles/jquery")*@
+    @*    @Scripts.Render("~/bundles/bootstrap")*@
+    @*    @RenderSection("scripts", required: false)*@
+
+<!-- ************** Script Login Page ************** -->
+    
+<!-- JS Global Compulsory -->
+<script src="../../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../../assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+<script src="../../assets/vendor/popper.min.js"></script>
+<script src="../../assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+
+<!-- JS Implementing Plugins -->
+<script src="../../assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+
+<!-- JS Unify -->
+<script src="../../assets/js/hs.core.js"></script>
+<script src="../../assets/js/components/hs.header.js"></script>
+<script src="../../assets/js/helpers/hs.hamburgers.js"></script>
+<script src="../../assets/js/components/hs.tabs.js"></script>
+<script src="../../assets/js/components/hs.go-to.js"></script>
+
+<!-- JS Customization -->
+<script src="../../assets/js/custom.js"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+    $(document).on('ready', function () {
+        // initialization of tabs
+        $.HSCore.components.HSTabs.init('[role="tablist"]');
+
+        // initialization of go to
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+    });
+
+    $(window).on('load', function () {
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#js-header'));
+        $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+        // initialization of HSMegaMenu component
+        $('.js-mega-menu').HSMegaMenu({
+            event: 'hover',
+            pageContainer: $('.container'),
+            breakpoint: 991
+        });
+    });
+
+    $(window).on('resize', function () {
+        setTimeout(function () {
+            $.HSCore.components.HSTabs.init('[role="tablist"]');
+        }, 200);
+    });
+</script>
+    
+<!-- ************** End Script Login Page ************** -->
+    
+<!-- ************** Script Home Page ************** -->
+    
+@*<script src="../../assets/vendor/jquery/jquery.min.js"></script>*@
+@*<script src="../../assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>*@
+@*<script src="../../assets/vendor/popper.min.js"></script>*@
+@*<script src="../../assets/vendor/bootstrap/bootstrap.min.js"></script>*@
+
+<!-- JS Implementing Plugins -->
+<script src="../../assets/vendor/appear.js"></script>
+<script src="../../assets/vendor/slick-carousel/slick/slick.js"></script>
+@*<script src="../../assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>*@
+<script src="../../assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+
+<!-- JS Unify -->
+@*<script src="../../assets/js/hs.core.js"></script>*@
+@*<script src="../../assets/js/components/hs.header.js"></script>*@
+@*<script src="../../assets/js/helpers/hs.hamburgers.js"></script>*@
+<script src="../../assets/js/components/hs.dropdown.js"></script>
+<script src="../../assets/js/helpers/hs.height-calc.js"></script>
+<script src="../../assets/js/components/hs.carousel.js"></script>
+@*<script src="../../assets/js/components/hs.go-to.js"></script>*@
+<script src="../../assets/js/components/hs.popup.js"></script>
+<script src="../../assets/js/components/hs.sticky-block.js"></script>
+
+<!-- JS Customization -->
+<script src="../../assets/js/custom.js"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+    $(document).on('ready', function () {
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#js-header'));
+        $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+        // initialization of MegaMenu
+        $('.js-mega-menu').HSMegaMenu();
+
+        // initialization of HSDropdown component
+        $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
+            afterOpen: function () {
+                $(this).find('input[type="search"]').focus();
+            }
+        });
+
+        // initialization of header's height equal offset
+        $.HSCore.helpers.HSHeightCalc.init();
+
+        // initialization of carousel
+        $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
+
+        // initialization of popups
+        $.HSCore.components.HSPopup.init('.js-fancybox');
+
+        // initialization of go to
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+    });
+
+    $(window).on('load', function () {
+        // initialization of sticky blocks
+        $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
+    });
+</script>
+    
+<!-- ************** End Script Home Page ************** -->
+    
+<!-- ************** Script Single Page ************** -->
+    
+<!-- JS Global Compulsory -->
+@*<script src="../../assets/vendor/jquery/jquery.min.js"></script>*@
+@*<script src="../../assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>*@
+@*<script src="../../assets/vendor/popper.min.js"></script>*@
+@*<script src="../../assets/vendor/bootstrap/bootstrap.min.js"></script>*@
+
+<!-- JS Implementing Plugins -->
+@*<script src="../../assets/vendor/appear.js"></script>*@
+<script src="../../assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+<script src="../../assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
+<script src="../../assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
+@*<script src="../../assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>*@
+@*<script src="../../assets/vendor/slick-carousel/slick/slick.js"></script>*@
+@*<script src="../../assets/vendor/fancybox/jquery.fancybox.min.js"></script>*@
+
+<!-- JS Unify -->
+@*<script src="../../assets/js/hs.core.js"></script>*@
+@*<script src="../../assets/js/components/hs.header.js"></script>*@
+@*<script src="../../assets/js/helpers/hs.hamburgers.js"></script>*@
+@*<script src="../../assets/js/components/hs.dropdown.js"></script>*@
+<script src="../../assets/js/components/hs.counter.js"></script>
+<script src="../../assets/js/components/hs.onscroll-animation.js"></script>
+@*<script src="../../assets/js/components/hs.sticky-block.js"></script>*@
+@*<script src="../../assets/js/components/hs.carousel.js"></script>*@
+@*<script src="../../assets/js/components/hs.popup.js"></script>*@
+@*<script src="../../assets/js/components/hs.go-to.js"></script>*@
+
+<!-- JS Customization -->
+<script src="../../assets/js/custom.js"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+    $(document).on('ready', function () {
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#js-header'));
+        $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+        // initialization of MegaMenu
+        $('.js-mega-menu').HSMegaMenu();
+
+        // initialization of HSDropdown component
+        $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), {
+            afterOpen: function(){
+                $(this).find('input[type="search"]').focus();
+            }
+        });
+
+        // initialization of scroll animation
+        $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
+
+        // initialization of go to
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+
+        // initialization of counters
+        var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
+
+        // initialization of carousel
+        $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
+
+        // initialization of popups
+        $.HSCore.components.HSPopup.init('.js-fancybox');
+    });
+
+    $(window).on('load', function () {
+        // initialization of sticky blocks
+        $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
+    });
+</script>
+
+<!-- ************** End Script Single Page ************** -->
+
 </body>
 </html>

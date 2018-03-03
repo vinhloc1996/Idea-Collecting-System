@@ -68,6 +68,11 @@ namespace Idea_Collecting_System.Models
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRole");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaim");
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin");
+            modelBuilder.Entity<Department>().ToTable("Department");
+            modelBuilder.Entity<Category>().ToTable("Category");
+            modelBuilder.Entity<Comment>().ToTable("Comment");
+            modelBuilder.Entity<Idea>().ToTable("Idea");
+            modelBuilder.Entity<IdeaState>().ToTable("IdeaState");
         }
 
         public static ApplicationDbContext Create()

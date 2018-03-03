@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201802071351299_ChangeIdentityTableName.Designer.cs">
       <DependentUpon>201802071351299_ChangeIdentityTableName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803030747516_ChangeTablesName.cs" />
+    <Compile Include="Migrations\201803030747516_ChangeTablesName.Designer.cs">
+      <DependentUpon>201803030747516_ChangeTablesName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -3355,7 +3359,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Shared\_Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3457,6 +3460,7 @@
     <Content Include="assets\vendor\slick-carousel\slick\slick.less" />
     <Content Include="assets\vendor\slick-carousel\slick\slick.scss" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -3467,6 +3471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802071351299_ChangeIdentityTableName.resx">
       <DependentUpon>201802071351299_ChangeIdentityTableName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803030747516_ChangeTablesName.resx">
+      <DependentUpon>201803030747516_ChangeTablesName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

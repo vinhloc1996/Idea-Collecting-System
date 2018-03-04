@@ -3362,8 +3362,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\vendor\dzsparallaxer\.sass-cache\1c2a4b3903a0da983c02e18cab56a1978d966d47\dzstooltip.scssc" />
@@ -3460,7 +3458,6 @@
     <Content Include="assets\vendor\slick-carousel\slick\slick.less" />
     <Content Include="assets\vendor\slick-carousel\slick\slick.scss" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

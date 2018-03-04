@@ -26,10 +26,5 @@ namespace Idea_Collecting_System.Controllers
 
             return View();
         }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
     }
 }

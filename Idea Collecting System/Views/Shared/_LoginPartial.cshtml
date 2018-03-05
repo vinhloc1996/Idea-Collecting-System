@@ -1,22 +1,58 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
+        
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        <div class="col-1">
+            <a id="account-dropdown-invoker" class="media align-items-center float-right g-text-underline--none--hover" href="#!"
+               aria-controls="account-dropdown"
+               aria-haspopup="true"
+               aria-expanded="false"
+               data-dropdown-event="hover"
+               data-dropdown-target="#account-dropdown"
+               data-dropdown-type="css-animation"
+               data-dropdown-duration="300"
+               data-dropdown-hide-on-scroll="false"
+               data-dropdown-animation-in="fadeIn"
+               data-dropdown-animation-out="fadeOut">
+                <div class="d-flex g-width-30 g-height-30 mr-2">
+                    <span><i class="fa fa-user-o fa-2x"></i></span>
+                </div>
+                <div class="media-body">
+                    <span class="d-block g-hidden-sm-down g-color-main g-font-weight-600 g-font-size-13 text-primary g-mr-15 nav-link text-uppercase g-color-primary--hover g-px-0">@User.Identity.GetUserName()</span>
+                </div>
+            </a>
+
+            <ul id="account-dropdown" class="list-unstyled text-right g-width-160 g-brd-around g-brd-secondary-light-v2 g-bg-white rounded g-pos-abs g-right-0 g-py-5 g-mt-57"
+                aria-labelledby="account-dropdown-invoker">
+                <li>
+@*                    <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">My Account</a>*@
+                    @Html.ActionLink("My Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "My Account", @class = "d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" })
+                </li>
+                <li>
+                    @Html.ActionLink("Notifications", "Notification", "Manage", routeValues: null, htmlAttributes: new { title = "Notifications", @class = "d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" })
+@*                    <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">Notifications</a>*@
+                </li>
+                <li>
+                    @Html.ActionLink("Settings", "Settings", "Manage", routeValues: null, htmlAttributes: new { title = "Settings", @class = "d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" })
+@*                    <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">Settings</a>*@
+                </li>
+                <li>
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20">Log off</a>
+                </li>
+            </ul>
+        </div>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+
+    <div class="col-1">
+
+            @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "text-primary g-mr-15 nav-link text-uppercase g-color-primary--hover g-px-0", Style = "text-decoration:  none;" })
+
+    </div>
 }

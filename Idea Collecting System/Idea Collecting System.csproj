@@ -198,6 +198,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
+    <Compile Include="Customs\AdminAuthorizeAttribute.cs" />
+    <Compile Include="Customs\CustomAuthorizeAttribute.cs" />
     <Compile Include="Database_Models\Department.cs" />
     <Compile Include="Database_Models\Category.cs" />
     <Compile Include="Database_Models\Idea.cs" />
@@ -3323,7 +3326,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -3334,8 +3339,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -3458,6 +3461,8 @@
     <Content Include="assets\vendor\slick-carousel\slick\slick.less" />
     <Content Include="assets\vendor\slick-carousel\slick\slick.scss" />
     <None Include="packages.config" />
+    <Content Include="Views\Manager\Admin.cshtml" />
+    <Content Include="Views\Home\AccessDenied.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

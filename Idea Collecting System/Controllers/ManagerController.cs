@@ -9,9 +9,15 @@ namespace Idea_Collecting_System.Controllers
 {
     public class ManagerController : Controller
     {
-        // GET: Manager
         [CustomAuthorize(Roles = "Admin")]
         public ActionResult Admin()
+        {
+            return View();
+        }
+
+//        [CustomAuthorize(Roles = "Admin,QAC,QAM")]
+        [AllowAnonymous]
+        public ActionResult Index()
         {
             return View();
         }

@@ -36,6 +36,7 @@ namespace Idea_Collecting_System.Models
         public bool? IsDisabled { get; set; }
 
         public Department Department { get; set; }
+        public Summary Summary { get; set; }
         public ICollection<Idea> Ideas { get; set; }
         public ICollection<Category> Categories { get; set; }
         public ICollection<Comment> Posts { get; set; }
@@ -73,6 +74,7 @@ namespace Idea_Collecting_System.Models
             modelBuilder.Entity<Comment>().ToTable("Comment");
             modelBuilder.Entity<Idea>().ToTable("Idea");
             modelBuilder.Entity<IdeaState>().ToTable("IdeaState");
+            modelBuilder.Entity<Summary>().ToTable("Summary");
         }
 
         public static ApplicationDbContext Create()

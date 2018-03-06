@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Idea_Collecting_System.Customs;
 using Idea_Collecting_System.Database_Models;
+using Idea_Collecting_System.Migrations;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -30,9 +34,10 @@ namespace Idea_Collecting_System.Models
 
         public string FullName { get; set; }
         public string Address { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime DoB { get; set; }
         public bool? Gender { get; set; }
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
         public bool? IsDisabled { get; set; }
 
         public Department Department { get; set; }
@@ -48,6 +53,10 @@ namespace Idea_Collecting_System.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            //Implement later
+//            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            
+//            Database.SetInitializer(new CustomInitializer());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

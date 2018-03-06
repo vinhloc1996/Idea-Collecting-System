@@ -1,3 +1,7 @@
+using Idea_Collecting_System.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace Idea_Collecting_System.Migrations
 {
     using System;
@@ -14,10 +18,36 @@ namespace Idea_Collecting_System.Migrations
 
         protected override void Seed(Idea_Collecting_System.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            var adminRole = new IdentityRole { Name = "Admin" };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            if (!context.Roles.Any(r => r.Name == "Admin"))
+            {
+                var qacRole = new IdentityRole {Name = "QAC"};
+                var qamRole = new IdentityRole {Name = "QAM"};
+
+                context.Roles.Add(adminRole);
+                context.Roles.Add(qacRole);
+                context.Roles.Add(qamRole);
+            }
+
+            if (!context.Users.Any(r => r.UserName == "admin@idc.com"))
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = "admin@idc.com",
+                    Email = "admin@idc.com",
+                    PasswordHash = new PasswordHasher().HashPassword("123456"),
+                    SecurityStamp = Guid.NewGuid().ToString()
+                };
+                var userRole = new IdentityUserRole
+                {
+                    RoleId = adminRole.Id,
+                    UserId = user.Id
+                };
+
+                user.Roles.Add(userRole);
+                context.Users.Add(user);
+            }
         }
     }
 }

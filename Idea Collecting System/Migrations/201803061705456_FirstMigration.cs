@@ -8,7 +8,7 @@ namespace Idea_Collecting_System.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.AspNetRoles",
+                "dbo.Role",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -18,28 +18,28 @@ namespace Idea_Collecting_System.Migrations
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
-                "dbo.AspNetUserRoles",
+                "dbo.UserRole",
                 c => new
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
                         RoleId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Role", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.AspNetUsers",
+                "dbo.User",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         FullName = c.String(),
                         Address = c.String(),
-                        DoB = c.DateTime(nullable: false),
+                        DoB = c.DateTime(nullable: false, storeType: "date"),
                         Gender = c.Boolean(),
-                        DepartmentId = c.Int(nullable: false),
+                        DepartmentId = c.Int(),
                         IsDisabled = c.Boolean(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
@@ -55,14 +55,14 @@ namespace Idea_Collecting_System.Migrations
                         Idea_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Ideas", t => t.Idea_Id)
-                .ForeignKey("dbo.Departments", t => t.DepartmentId, cascadeDelete: true)
+                .ForeignKey("dbo.Idea", t => t.Idea_Id)
+                .ForeignKey("dbo.Department", t => t.DepartmentId)
                 .Index(t => t.DepartmentId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex")
                 .Index(t => t.Idea_Id);
             
             CreateTable(
-                "dbo.Categories",
+                "dbo.Category",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -76,11 +76,11 @@ namespace Idea_Collecting_System.Migrations
                         ApplicationUserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
+                .ForeignKey("dbo.User", t => t.ApplicationUserId)
                 .Index(t => t.ApplicationUserId);
             
             CreateTable(
-                "dbo.Ideas",
+                "dbo.Idea",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -99,15 +99,15 @@ namespace Idea_Collecting_System.Migrations
                         ApplicationUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
-                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
+                .ForeignKey("dbo.User", t => t.ApplicationUserId)
+                .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.ApplicationUser_Id)
                 .Index(t => t.CategoryId)
                 .Index(t => t.ApplicationUserId)
                 .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
-                "dbo.Comments",
+                "dbo.Comment",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -122,13 +122,13 @@ namespace Idea_Collecting_System.Migrations
                         ApplicationUserId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
-                .ForeignKey("dbo.Ideas", t => t.IdeaId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.ApplicationUserId)
+                .ForeignKey("dbo.Idea", t => t.IdeaId, cascadeDelete: true)
                 .Index(t => t.IdeaId)
                 .Index(t => t.ApplicationUserId);
             
             CreateTable(
-                "dbo.IdeaStates",
+                "dbo.IdeaState",
                 c => new
                     {
                         ApplicationUserId = c.String(nullable: false, maxLength: 128),
@@ -136,13 +136,13 @@ namespace Idea_Collecting_System.Migrations
                         IsThumbUp = c.Boolean(),
                     })
                 .PrimaryKey(t => new { t.ApplicationUserId, t.IdeaId })
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId, cascadeDelete: true)
-                .ForeignKey("dbo.Ideas", t => t.IdeaId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.ApplicationUserId, cascadeDelete: true)
+                .ForeignKey("dbo.Idea", t => t.IdeaId, cascadeDelete: true)
                 .Index(t => t.ApplicationUserId)
                 .Index(t => t.IdeaId);
             
             CreateTable(
-                "dbo.AspNetUserClaims",
+                "dbo.UserClaim",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -151,11 +151,11 @@ namespace Idea_Collecting_System.Migrations
                         ClaimValue = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.Departments",
+                "dbo.Department",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -168,7 +168,7 @@ namespace Idea_Collecting_System.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AspNetUserLogins",
+                "dbo.UserLogin",
                 c => new
                     {
                         LoginProvider = c.String(nullable: false, maxLength: 128),
@@ -176,53 +176,71 @@ namespace Idea_Collecting_System.Migrations
                         UserId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.Summary",
+                c => new
+                    {
+                        ApplicationUserId = c.String(nullable: false, maxLength: 128),
+                        TotalIdea = c.Int(nullable: false),
+                        TotalComment = c.Int(nullable: false),
+                        TotalReply = c.Int(nullable: false),
+                        TotalThumbUp = c.Int(nullable: false),
+                        TotalThumbDown = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ApplicationUserId)
+                .ForeignKey("dbo.User", t => t.ApplicationUserId)
+                .Index(t => t.ApplicationUserId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Ideas", "ApplicationUser_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUsers", "DepartmentId", "dbo.Departments");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.IdeaStates", "IdeaId", "dbo.Ideas");
-            DropForeignKey("dbo.IdeaStates", "ApplicationUserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Comments", "IdeaId", "dbo.Ideas");
-            DropForeignKey("dbo.Comments", "ApplicationUserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Ideas", "CategoryId", "dbo.Categories");
-            DropForeignKey("dbo.AspNetUsers", "Idea_Id", "dbo.Ideas");
-            DropForeignKey("dbo.Ideas", "ApplicationUserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Categories", "ApplicationUserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.IdeaStates", new[] { "IdeaId" });
-            DropIndex("dbo.IdeaStates", new[] { "ApplicationUserId" });
-            DropIndex("dbo.Comments", new[] { "ApplicationUserId" });
-            DropIndex("dbo.Comments", new[] { "IdeaId" });
-            DropIndex("dbo.Ideas", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.Ideas", new[] { "ApplicationUserId" });
-            DropIndex("dbo.Ideas", new[] { "CategoryId" });
-            DropIndex("dbo.Categories", new[] { "ApplicationUserId" });
-            DropIndex("dbo.AspNetUsers", new[] { "Idea_Id" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUsers", new[] { "DepartmentId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.Departments");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.IdeaStates");
-            DropTable("dbo.Comments");
-            DropTable("dbo.Ideas");
-            DropTable("dbo.Categories");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
+            DropForeignKey("dbo.Summary", "ApplicationUserId", "dbo.User");
+            DropForeignKey("dbo.UserRole", "UserId", "dbo.User");
+            DropForeignKey("dbo.UserLogin", "UserId", "dbo.User");
+            DropForeignKey("dbo.Idea", "ApplicationUser_Id", "dbo.User");
+            DropForeignKey("dbo.User", "DepartmentId", "dbo.Department");
+            DropForeignKey("dbo.UserClaim", "UserId", "dbo.User");
+            DropForeignKey("dbo.IdeaState", "IdeaId", "dbo.Idea");
+            DropForeignKey("dbo.IdeaState", "ApplicationUserId", "dbo.User");
+            DropForeignKey("dbo.Comment", "IdeaId", "dbo.Idea");
+            DropForeignKey("dbo.Comment", "ApplicationUserId", "dbo.User");
+            DropForeignKey("dbo.Idea", "CategoryId", "dbo.Category");
+            DropForeignKey("dbo.User", "Idea_Id", "dbo.Idea");
+            DropForeignKey("dbo.Idea", "ApplicationUserId", "dbo.User");
+            DropForeignKey("dbo.Category", "ApplicationUserId", "dbo.User");
+            DropForeignKey("dbo.UserRole", "RoleId", "dbo.Role");
+            DropIndex("dbo.Summary", new[] { "ApplicationUserId" });
+            DropIndex("dbo.UserLogin", new[] { "UserId" });
+            DropIndex("dbo.UserClaim", new[] { "UserId" });
+            DropIndex("dbo.IdeaState", new[] { "IdeaId" });
+            DropIndex("dbo.IdeaState", new[] { "ApplicationUserId" });
+            DropIndex("dbo.Comment", new[] { "ApplicationUserId" });
+            DropIndex("dbo.Comment", new[] { "IdeaId" });
+            DropIndex("dbo.Idea", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.Idea", new[] { "ApplicationUserId" });
+            DropIndex("dbo.Idea", new[] { "CategoryId" });
+            DropIndex("dbo.Category", new[] { "ApplicationUserId" });
+            DropIndex("dbo.User", new[] { "Idea_Id" });
+            DropIndex("dbo.User", "UserNameIndex");
+            DropIndex("dbo.User", new[] { "DepartmentId" });
+            DropIndex("dbo.UserRole", new[] { "RoleId" });
+            DropIndex("dbo.UserRole", new[] { "UserId" });
+            DropIndex("dbo.Role", "RoleNameIndex");
+            DropTable("dbo.Summary");
+            DropTable("dbo.UserLogin");
+            DropTable("dbo.Department");
+            DropTable("dbo.UserClaim");
+            DropTable("dbo.IdeaState");
+            DropTable("dbo.Comment");
+            DropTable("dbo.Idea");
+            DropTable("dbo.Category");
+            DropTable("dbo.User");
+            DropTable("dbo.UserRole");
+            DropTable("dbo.Role");
         }
     }
 }

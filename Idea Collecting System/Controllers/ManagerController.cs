@@ -7,6 +7,7 @@ using Idea_Collecting_System.Customs;
 
 namespace Idea_Collecting_System.Controllers
 {
+    [CustomAuthorize(Roles =  "Admin,QAC,QAM")]
     public class ManagerController : Controller
     {
         [CustomAuthorize(Roles = "Admin")]
@@ -14,8 +15,7 @@ namespace Idea_Collecting_System.Controllers
         {
             return View();
         }
-
-//        [CustomAuthorize(Roles = "Admin,QAC,QAM")]
+        
         [AllowAnonymous]
         public ActionResult Index()
         {

@@ -29,16 +29,13 @@
             <ul id="account-dropdown" class="list-unstyled text-right g-width-160 g-brd-around g-brd-secondary-light-v2 g-bg-white rounded g-pos-abs g-right-0 g-py-5 g-mt-57"
                 aria-labelledby="account-dropdown-invoker">
                 <li>
-@*                    <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">My Account</a>*@
                     @Html.ActionLink("My Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "My Account", @class = "d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" })
                 </li>
                 <li>
                     @Html.ActionLink("Notifications", "Notification", "Manage", routeValues: null, htmlAttributes: new { title = "Notifications", @class = "d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" })
-@*                    <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">Notifications</a>*@
                 </li>
                 <li>
                     @Html.ActionLink("Settings", "Settings", "Manage", routeValues: null, htmlAttributes: new { title = "Settings", @class = "d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" })
-@*                    <a class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20" href="#!">Settings</a>*@
                 </li>
                 <li>
                     <a href="javascript:document.getElementById('logoutForm').submit()" class="d-block g-color-secondary-dark-v1 g-color-primary--hover g-text-underline--none--hover g-py-5 g-px-20">Log off</a>

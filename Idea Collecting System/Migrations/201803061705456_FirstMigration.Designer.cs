@@ -7,13 +7,13 @@ namespace Idea_Collecting_System.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ChangeTablesName : IMigrationMetadata
+    public sealed partial class FirstMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeTablesName));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803030747516_ChangeTablesName"; }
+            get { return "201803061705456_FirstMigration"; }
         }
         
         string IMigrationMetadata.Source

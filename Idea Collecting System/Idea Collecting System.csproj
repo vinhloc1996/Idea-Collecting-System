@@ -201,6 +201,7 @@
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Customs\AdminAuthorizeAttribute.cs" />
     <Compile Include="Customs\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Customs\CustomInitializer.cs" />
     <Compile Include="Database_Models\Department.cs" />
     <Compile Include="Database_Models\Category.cs" />
     <Compile Include="Database_Models\Idea.cs" />
@@ -209,21 +210,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802071339471_FirstMigration.cs" />
-    <Compile Include="Migrations\201802071339471_FirstMigration.Designer.cs">
-      <DependentUpon>201802071339471_FirstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802071351299_ChangeIdentityTableName.cs" />
-    <Compile Include="Migrations\201802071351299_ChangeIdentityTableName.Designer.cs">
-      <DependentUpon>201802071351299_ChangeIdentityTableName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803030747516_ChangeTablesName.cs" />
-    <Compile Include="Migrations\201803030747516_ChangeTablesName.Designer.cs">
-      <DependentUpon>201803030747516_ChangeTablesName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803051217297_AddSummary.cs" />
-    <Compile Include="Migrations\201803051217297_AddSummary.Designer.cs">
-      <DependentUpon>201803051217297_AddSummary.cs</DependentUpon>
+    <Compile Include="Migrations\201803061705456_FirstMigration.cs" />
+    <Compile Include="Migrations\201803061705456_FirstMigration.Designer.cs">
+      <DependentUpon>201803061705456_FirstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -4535,22 +4524,16 @@
     <Content Include="Views\Manager\_Header.cshtml" />
     <Content Include="Views\Manager\_Footer.cshtml" />
     <Content Include="Views\Manager\_Sidebar.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Manager\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802071339471_FirstMigration.resx">
-      <DependentUpon>201802071339471_FirstMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802071351299_ChangeIdentityTableName.resx">
-      <DependentUpon>201802071351299_ChangeIdentityTableName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803030747516_ChangeTablesName.resx">
-      <DependentUpon>201803030747516_ChangeTablesName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803051217297_AddSummary.resx">
-      <DependentUpon>201803051217297_AddSummary.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803061705456_FirstMigration.resx">
+      <DependentUpon>201803061705456_FirstMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

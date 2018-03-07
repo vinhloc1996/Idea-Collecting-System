@@ -1,0 +1,127 @@
+﻿@{
+    var pageName = ViewContext.RouteData.Values["controller"].ToString();
+    var viewName = ViewContext.RouteData.Values["action"].ToString();
+}
+<div id="sideNav" class="col-auto u-sidebar-navigation-v1 u-sidebar-navigation--dark">
+    <ul id="sideNavMenu" class="u-sidebar-navigation-v1-menu u-side-nav--top-level-menu g-min-height-100vh mb-0">
+        <li class="u-sidebar-navigation-v1-menu-item u-side-nav--top-level-menu-item">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12 @((pageName.ToLower() == "home" && viewName.ToLower() == "index") ? "active" : "")" href="@Url.Action("Index", "Home", new {Area = "Manager"})">
+                <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                    <i class="hs-admin-home"></i>
+                </span>
+                <span class="media-body align-self-center">Home</span>
+            </a>
+        </li>
+
+        <li class="u-sidebar-navigation-v1-menu-item u-side-nav--has-sub-menu u-side-nav--top-level-menu-item @(pageName.ToLower() == "department" ? "has-active u-side-nav-opened " : "")">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="#" data-hssm-target="#subMenuDepartment">
+                <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                    <i class="far fa-building"></i>
+                </span>
+                <span class="media-body align-self-center">Department</span>
+                <span class="d-flex align-self-center u-side-nav--control-icon">
+                    <i class="hs-admin-angle-right"></i>
+                </span>
+                <span class="u-side-nav--has-sub-menu__indicator"></span>
+            </a>
+            <ul id="subMenuDepartment" class="u-sidebar-navigation-v1-menu u-side-nav--second-level-menu mb-0">
+                <li class="u-sidebar-navigation-v1-menu-item u-side-nav--second-level-menu-item">
+                    <a class="media u-side-nav--second-level-menu-link g-px-15 g-py-12 @((pageName.ToLower() == "department" && viewName.ToLower() == "insert") ? "active" : "")" href="@Url.Action("Insert", "Department", new {Area = "Manager"})">
+                        <span class="d-flex align-self-center g-mr-15 g-mt-minus-1">
+                            <i class="hs-admin-plus"></i>
+                        </span>
+                        <span class="media-body align-self-center">Insert</span>
+                    </a>
+                </li>
+                <li class="u-sidebar-navigation-v1-menu-item u-side-nav--second-level-menu-item">
+                    <a class="media u-side-nav--second-level-menu-link g-px-15 g-py-12  @((pageName.ToLower() == "department" && viewName.ToLower() == "view") ? "active" : "")" href="@Url.Action("Read", "Department", new {Area = "Manager"})">
+                        <span class="d-flex align-self-center g-mr-15 g-mt-minus-1">
+                            <i class="hs-admin-view-list-alt"></i>
+                        </span>
+                        <span class="media-body align-self-center">View</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="u-sidebar-navigation-v1-menu-item u-side-nav--has-sub-menu u-side-nav--top-level-menu-item @(pageName.ToLower() == "user" ? "has-active u-side-nav-opened" : "")">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="#" data-hssm-target="#subMenuUser">
+                <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                    <i class="hs-admin-user"></i>
+                </span>
+                <span class="media-body align-self-center">User</span>
+                <span class="d-flex align-self-center u-side-nav--control-icon">
+                    <i class="hs-admin-angle-right"></i>
+                </span>
+                <span class="u-side-nav--has-sub-menu__indicator"></span>
+            </a>
+            <ul id="subMenuUser" class="u-sidebar-navigation-v1-menu u-side-nav--second-level-menu mb-0">
+                <li class="u-sidebar-navigation-v1-menu-item u-side-nav--second-level-menu-item">
+                    <a class="media u-side-nav--second-level-menu-link g-px-15 g-py-12 @((pageName.ToLower() == "user" && viewName.ToLower() == "insert") ? "active" : "")" href="#">
+                        <span class="d-flex align-self-center g-mr-15 g-mt-minus-1">
+                            <i class="hs-admin-plus"></i>
+                        </span>
+                        <span class="media-body align-self-center">Insert</span>
+                    </a>
+                </li>
+                <li class="u-sidebar-navigation-v1-menu-item u-side-nav--second-level-menu-item">
+                    <a class="media u-side-nav--second-level-menu-link g-px-15 g-py-12  @((pageName.ToLower() == "user" && viewName.ToLower() == "view") ? "active" : "")" href="#">
+                        <span class="d-flex align-self-center g-mr-15 g-mt-minus-1">
+                            <i class="hs-admin-view-list-alt"></i>
+                        </span>
+                        <span class="media-body align-self-center">View</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="u-sidebar-navigation-v1-menu-item u-side-nav--has-sub-menu u-side-nav--top-level-menu-item @(pageName.ToLower() == "user" ? "has-active u-side-nav-opened" : "")">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="#" data-hssm-target="#subMenuCategory">
+                <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                    <i class="hs-admin-layers"></i>
+                </span>
+                <span class="media-body align-self-center">Category</span>
+                <span class="d-flex align-self-center u-side-nav--control-icon">
+                    <i class="hs-admin-angle-right"></i>
+                </span>
+                <span class="u-side-nav--has-sub-menu__indicator"></span>
+            </a>
+            <ul id="subMenuCategory" class="u-sidebar-navigation-v1-menu u-side-nav--second-level-menu mb-0">
+                <li class="u-sidebar-navigation-v1-menu-item u-side-nav--second-level-menu-item">
+                    <a class="media u-side-nav--second-level-menu-link g-px-15 g-py-12 @((pageName.ToLower() == "category" && viewName.ToLower() == "insert") ? "active" : "")" href="#">
+                        <span class="d-flex align-self-center g-mr-15 g-mt-minus-1">
+                            <i class="hs-admin-plus"></i>
+                        </span>
+                        <span class="media-body align-self-center">Insert</span>
+                    </a>
+                </li>
+                <li class="u-sidebar-navigation-v1-menu-item u-side-nav--second-level-menu-item">
+                    <a class="media u-side-nav--second-level-menu-link g-px-15 g-py-12  @((pageName.ToLower() == "category" && viewName.ToLower() == "view") ? "active" : "")" href="#">
+                        <span class="d-flex align-self-center g-mr-15 g-mt-minus-1">
+                            <i class="hs-admin-view-list-alt"></i>
+                        </span>
+                        <span class="media-body align-self-center">View</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="u-sidebar-navigation-v1-menu-item u-side-nav--top-level-menu-item">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12 @(pageName.ToLower() == "academicyear" ? "active" : "")" href="#">
+                <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                    <i class="fas fa-graduation-cap"></i>
+                </span>
+                <span class="media-body align-self-center">Academic Year</span>
+            </a>
+        </li>
+
+        <li class="u-sidebar-navigation-v1-menu-item u-side-nav--top-level-menu-item ">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12 @(pageName.ToLower() == "setting" ? "active" : "")" href="#">
+                <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                    <i class="hs-admin-settings"></i>
+                </span>
+                <span class="media-body align-self-center">Other Settings</span>
+            </a>
+        </li>
+    </ul>
+</div>

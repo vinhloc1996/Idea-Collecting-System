@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Idea_Collecting_System.Customs;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -11,7 +12,7 @@ using Idea_Collecting_System.Models;
 namespace Idea_Collecting_System.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : CustomController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

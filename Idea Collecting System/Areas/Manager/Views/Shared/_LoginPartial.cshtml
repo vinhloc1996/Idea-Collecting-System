@@ -1,21 +1,15 @@
-﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
         @Html.AntiForgeryToken()
-        <div class="col-auto d-flex g-pt-5 g-pt-0--sm g-pl-10 g-pl-20--sm">
+        <div class="col-auto d-flex g-pt-5 g-pt-0--sm g-pl-10 g-pl-20--sm" style="margin-top: 10px;">
             <div class="g-pos-rel g-px-10--lg">
                 <a id="profileMenuInvoker" class="d-block" href="#!" aria-controls="profileMenu" aria-haspopup="true" aria-expanded="false" data-dropdown-event="click" data-dropdown-target="#profileMenu" data-dropdown-type="css-animation" data-dropdown-duration="300"
                    data-dropdown-animation-in="fadeIn" data-dropdown-animation-out="fadeOut">
-                    <span class="g-pos-rel">
-                        <span class="u-badge-v2--xs u-badge--top-right g-hidden-sm-up g-bg-lightblue-v5 g-mr-5"></span>
-                        <span class="g-width-30 g-width-40--md g-height-30 g-height-40--md rounded-circle g-mr-10--sm">
-                            <i class="fa fa-user-o fa-2x"></i>
-                        </span>
-                    </span>
                     <span class="g-pos-rel g-top-2">
-                        <span class="g-hidden-sm-down">@User.Identity.GetUserName()</span>
+                        <span class="g-hidden-sm-down">@ViewData["DisplayName"]</span>
                         <i class="hs-admin-angle-down g-pos-rel g-top-2 g-ml-10"></i>
                     </span>
                 </a>

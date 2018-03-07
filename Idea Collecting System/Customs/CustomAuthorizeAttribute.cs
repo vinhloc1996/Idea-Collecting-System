@@ -12,9 +12,9 @@ namespace Idea_Collecting_System.Customs
                 filterContext.Result = new RedirectResult("~/Account/Login");
                 return;
             }
-            if(filterContext.HttpContext.User.Identity.IsAuthenticated && filterContext.HttpContext.User.IsInRole("Admin") && filterContext.ActionDescriptor.ControllerDescriptor.ControllerName == "Home")
+            if(filterContext.HttpContext.User.Identity.IsAuthenticated && filterContext.HttpContext.User.IsInRole("Admin") && filterContext.ActionDescriptor.ControllerDescriptor.ControllerName == "Home" && filterContext.HttpContext.Request.RequestContext.RouteData.DataTokens["area"] == null)
             {
-                filterContext.Result = new RedirectResult("~/Manager/Admin");
+                filterContext.Result = new RedirectResult("~/Manager/Home");
                 return;
             }
 

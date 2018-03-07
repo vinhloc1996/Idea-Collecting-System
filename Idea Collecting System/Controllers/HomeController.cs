@@ -8,12 +8,12 @@ using Idea_Collecting_System.Customs;
 
 namespace Idea_Collecting_System.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : CustomController
     {
         //CustomAuthorize Work! Disable for developing index page
-//        [CustomAuthorize(Roles = "Student,QAC,QAM")]
+        [CustomAuthorize(Roles = "Student,QAC,QAM")]
         //AllowAnonymous for developing stage only!
-        [AllowAnonymous]
+//        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();

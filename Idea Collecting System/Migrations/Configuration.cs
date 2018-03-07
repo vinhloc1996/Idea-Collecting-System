@@ -19,7 +19,7 @@ namespace Idea_Collecting_System.Migrations
         protected override void Seed(Idea_Collecting_System.Models.ApplicationDbContext context)
         {
             var adminRole = new IdentityRole { Name = "Admin" };
-
+            //Seed role
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var qacRole = new IdentityRole {Name = "QAC"};
@@ -29,7 +29,7 @@ namespace Idea_Collecting_System.Migrations
                 context.Roles.Add(qacRole);
                 context.Roles.Add(qamRole);
             }
-
+            //Seed user
             if (!context.Users.Any(r => r.UserName == "admin@idc.com"))
             {
                 var user = new ApplicationUser

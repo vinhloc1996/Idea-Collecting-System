@@ -90,5 +90,7 @@ namespace Idea_Collecting_System.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Department> Department { get; set; }
     }
 }
